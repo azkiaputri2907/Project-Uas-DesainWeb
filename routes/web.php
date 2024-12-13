@@ -38,4 +38,15 @@ Route::get('/', function () {
 Route::get('/pengaduan/create', [PengaduanController::class, 'create'])->name('pengaduan.create');
 Route::post('/pengaduan', [PengaduanController::class, 'store'])->name('pengaduan.store');
 
+Route::get('/home', function () {
+    return view('home'); // Ganti 'home' dengan nama view untuk halaman home Anda
+})->name('home');
+
+
+use Illuminate\Support\Facades\Auth;
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login'); // Arahkan ke halaman login setelah log out
+})->name('logout');
 
